@@ -1,0 +1,36 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+  <h1>
+    GitHub Score
+  </h1>
+<div class="form"  >
+   <form (submit)="onSubmit()" #gitscore="ngForm">
+    <label for="username">GitHub Username:</label>
+    <input type="text" name="username" required [(ngModel)] = "user.name"  #username="ngModel" >
+   
+    <button type="submit" [disabled]="!gitscore.form.valid">Calculate My GitHub Score</button>
+  </form> 
+
+
+
+</div>
+
+<h1>My Score!</h1>
+<div *ngIf="tasks.public_repos + tasks.followers < 20">
+  <h1 style="color: red"> {{ tasks.public_repos + tasks.followers | json  }}...great start </h1> 
+</div>
+<div *ngIf="tasks.public_repos + tasks.followers < 50 && tasks.public_repos + tasks.followers > 20">
+  <h1 style="color: orange"> {{ tasks.public_repos + tasks.followers | json  }}...decent start </h1> 
+</div>
+<div *ngIf="tasks.public_repos + tasks.followers < 100 && tasks.public_repos + tasks.followers > 50">
+  <h1 style="color: black"> {{ tasks.public_repos + tasks.followers | json  }}... Doing GOOD</h1> 
+</div>
+<div *ngIf="tasks.public_repos + tasks.followers < 200 && tasks.public_repos + tasks.followers > 100">
+  <h1 style="color: green"> {{ tasks.public_repos + tasks.followers | json  }}...GREAT JOB! </h1> 
+</div>
+<div *ngIf="tasks.public_repos + tasks.followers >= 200 ">
+  <h1 style="color: blue"> {{ tasks.public_repos + tasks.followers | json  }}...GitHub Elite </h1> 
+</div>
+<div *ngIf="tasks.err">
+  <h1 style="color: red"> No Such Username </h1> 
+</div>
